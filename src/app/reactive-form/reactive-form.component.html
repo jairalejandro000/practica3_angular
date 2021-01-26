@@ -1,0 +1,47 @@
+<!--Usamos la directiva formGroup para darle la referencia al formulario con el que trabajamos-->
+<!--Usamos el atributo formControlName para tener acceso directo a cada campo-->
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label>
+      Nombre:
+      <input type="text" formControlName="nombre" required>
+    </label>
+    <label>
+      Apellido:
+      <input type="text" formControlName="apellido">
+    </label>
+    <div formGroupName="direccion">
+      <h3>Dirección</h3>
+      <label>
+        Calle:
+        <input type="text" formControlName="calle">
+      </label>
+      <label>
+        Ciudad:
+        <input type="text" formControlName="ciudad">
+      </label>
+      <label>
+        Estado:
+        <input type="text" formControlName="estado">
+      </label>
+      <label>
+        CP:
+        <input type="text" formControlName="CP">
+      </label>
+    </div>
+    <div formArrayName="aliases">
+      <h3>Alias</h3> <button (click)="addAlias()">Add Alias</button>
+      <div *ngFor="let alias of aliases.controls; let i=index">
+        <!-- The repeated alias template -->
+        <label>
+          Alias {{i+1}}:
+          <input type="text" [formControlName]="i">
+        </label>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  </form>
+  <hr>
+    Form Status: {{ profileForm.status }}
+  <p>
+    <button (click)="updateProfile()">Update Profile</button>
+  </p>
