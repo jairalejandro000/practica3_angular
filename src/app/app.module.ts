@@ -7,13 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { OpenCloseComponent } from './animation/animation.component';
-import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReactiveFormComponent,
+    ReactiveFormComponent
     OpenCloseComponent
   ],
   imports: [
